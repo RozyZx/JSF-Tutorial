@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<h:head><title>Exercises: The JSF 2 Expression Language</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+</h:head>
+<body>
+	<div class="bgo" id="home" style="background-color:#54475e;">
+		<div class="topnav" id="myTopnav">
+  			<a href="index.xhtml">Home</a>
+  			<a href="simpleBean.jsf">Expression Lang</a>
+  			<a href="validation1.jsf">Validation-1</a>
+  			<a href="#" class="active">Validation-2</a>
+  			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    			<i class="fa fa-bars"></i>
+  			</a>
+		</div>
+
+		<div class="content">
+			<fieldset>
+				<legend>Manual Validation</legend>
+				<h:form id="mainForm1">
+					<h:panelGrid columns="3" styleClass="formTable">
+  					Username: 
+  					<h:inputText value="#{registrationBean.username}" required="true"
+							requiredMessage="Username required" id="username" />
+						<h:message for="username" />        
+  					
+  					Password: 
+  					<h:inputSecret value="#{registrationBean.password1}"
+							required="true" requiredMessage="Password required"
+							id="password1" />
+						<h:message for="password1" /> 
+  					
+  					Confirm Password: 
+  					<h:inputSecret value="#{registrationBean.password2}"
+							required="true" requiredMessage="Password confirmation required"
+							id="password2" />
+						<h:message for="password2" />
+					</h:panelGrid>
+					<h:commandButton value="Register"
+						action="#{registrationBean.doRegistration}" />
+				</h:form>
+			</fieldset>
+			<p/>
+			<fieldset>
+				<legend>Manual Validation</legend>
+				<h:form id="mainForm2">
+					<h:panelGrid columns="3" styleClass="formTable">
+  					Username: 
+  					<h:inputText value="#{registrationBean.username}" required="true"
+							requiredMessage="Username required" id="username" />
+						<h:message for="username" />        
+					
+  					Password: 
+  					<h:inputSecret value="#{registrationBean.password1}"
+							required="true" requiredMessage="Password required"
+							validator="#{passwordChecker.validatePassword}" id="password1" />
+						<h:message for="password1" /> 
+					
+  					Confirm Password: 
+  					<h:inputSecret value="#{registrationBean.password2}"
+							required="true" requiredMessage="Password confirmation required"
+							id="password2" />
+						<h:message for="password2" />
+					</h:panelGrid>
+					<h:commandButton value="Register"
+						action="#{registrationBean.doRegistration}" />
+				</h:form>
+			</fieldset>
+			<p/>
+			<fieldset>
+				<legend>#{str.legend}</legend>
+				<h:form>
+					<h:panelGrid columns="3" styleClass="formTable">
+  					#{str.namePrompt} 
+  					<h:inputText value="#{nominationBean.name}" required="true"
+							requiredMessage="#{str.nameRequiredMessage}" id="name" />
+						<h:message for="name" />
+					</h:panelGrid>
+					<h:commandButton value="#{str.buttonLabel}"
+						action="#{nominationBean.doNomination}" />
+				</h:form>
+			</fieldset>
+			<p/>
+			<fieldset>
+			<legend>Apache MyFaces Commons Validators</legend>
+			<h:form>
+				<h:panelGrid columns="3" styleClass="formTable">
+  					Email address: 
+  					<h:inputText value="#{spamBean.email}" required="true"
+						requiredMessage="Email address required"
+						validatorMessage="Invalid email address" id="email">
+						<mcv:validateEmail />
+					</h:inputText>
+					<h:message for="email" />        
+					
+  					Favorite URL: 
+  					<h:inputText value="#{spamBean.url1}" required="true"
+						requiredMessage="First URL required"
+						validatorMessage="Invalid URL" id="url1">
+						<mcv:validateUrl />
+					</h:inputText>
+					<h:message for="url1" /> 
+					
+  					Second-Favorite URL: 
+  					<h:inputText value="#{spamBean.url2}" required="true"
+						requiredMessage="Second URL required" id="url2">
+						<mcv:validateUrl message="Invalid URL" />
+						<mcv:validateCompareTo operator="ne" forId="url1"
+							message="URLs must be different" />
+					</h:inputText>
+					<h:message for="url2" />
+				</h:panelGrid>
+				<h:commandButton value="Sign Up for Spam!"
+					action="#{spamBean.signup}" />
+			</h:form>
+		</fieldset>
+		</div>
+	</div>
+	
+	<script>
+		function myFunction() {
+  			var x = document.getElementById("myTopnav");
+  			if (x.className === "topnav") {
+    			x.className += " responsive";
+  			} else {
+    			x.className = "topnav";
+  			}
+		}
+	</script>	
+</body>
+</html>

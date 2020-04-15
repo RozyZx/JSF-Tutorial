@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Exercises: The JSF 2 Expression Language</title>
+	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<div class="bgo" id="home" style="background-color: #595e47;">
+		<div class="topnav" id="myTopnav">
+			<a href="index.xhtml">Home</a> <a href="#" class="active">Expression
+				Lang</a> <a href="validation1.jsf">Validation-1</a> <a
+				href="validation2.jsf">Validation-2</a> <a
+				href="javascript:void(0);" class="icon" onclick="myFunction()">
+				<i class="fa fa-bars"></i>
+			</a>
+		</div>
+
+		<div class="content">
+			<fieldset>
+				<legend>Favorite Colors</legend>
+				<table border="1">
+					<tr>
+						<th>Array</th>
+						<th>List</th>
+					</tr>
+					<tr>
+						<td>
+							<ui:repeat var="clr" value="#{favorites.favoriteColors1}">
+								<li>#{clr}</li>
+							</ui:repeat></td>
+						<td>
+							<ui:repeat var="clr" value="#{favorites.favoriteColors2}">
+								<li>#{clr}</li>
+							</ui:repeat>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<p />
+			<fieldset>
+				<legend>Employees</legend>
+				<h2>Employees with Given ID:</h2>
+				<ul>
+					<li>a1234: #{company.employees["a1234"]}</li>
+					<li>a1235: #{company.employees["a1235"]}</li>
+					<li>a1236: #{company.employees["a1236"]}</li>
+				</ul>
+			</fieldset>
+			<p />
+			<fieldset>
+				<legend>Conditional Rendering</legend>
+				<h2>Positive Numbers:</h2>
+				<ui:repeat var="num" value="#{favorites.nums}">
+					<ui:fragment rendered="#{num>=0}">
+						<li>#{num}</li>
+					</ui:fragment>
+				</ui:repeat>
+			</fieldset>
+		</div>
+	</div>
+
+	<script>
+		function myFunction() {
+  			var x = document.getElementById("myTopnav");
+  			if (x.className === "topnav") {
+    			x.className += " responsive";
+  			} else {
+    			x.className = "topnav";
+  			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>Exercises: The JSF 2 Expression Language</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+</h:head>
+<body>
+	<div class="bg" id="home">
+		<div class="topnav" id="myTopnav">
+  			<a href="#home" class="active">Home</a>
+  			<a href="simpleBean.jsf">Expression Lang</a>
+  			<a href="validation1.jsf">Validation-1</a>
+  			<a href="validation2.jsf">Validation-2</a>
+  			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    			<i class="fa fa-bars"></i>
+  			</a>
+		</div>
+		
+		<div style="padding-left:16px">
+			<div class="vertical-center">
+  				<h1>NightFury JSF Tutorial Home Page</h1>
+  				<p>Pemenuhan tugas tutorial individu JSF RSBK oleh Muhammad Fachrurrozy</p>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		function myFunction() {
+  			var x = document.getElementById("myTopnav");
+  			if (x.className === "topnav") {
+    			x.className += " responsive";
+  			} else {
+    			x.className = "topnav";
+  			}
+		}
+	</script>	
+</body>
+</html>
