@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>Exercises: The JSF 2 Expression Language</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+</h:head>
+<body>
+	<div class="bgo" id="home" style="background-color: #730025;">
+		<div class="topnav" id="myTopnav">
+  			<a href="#home">Home</a>
+  			<a href="simpleBean.jsf">Expression Lang</a>
+  			<a href="validation1.jsf">Validation-1</a>
+  			<a href="validation2.jsf">Validation-2</a>
+  			<a href="#" class="active">Ajax</a>
+  			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    			<i class="fa fa-bars"></i>
+  			</a>
+		</div>
+
+		<div class="content">
+			<fieldset>
+				<legend>Update Time</legend>
+				<h:form>
+					<p>Current Time:</p>
+					<br />
+					<h3 class="no_margin_top">
+						<h:outputText id="timeOutput" value="#{ajax.time}" />
+					</h3>
+					<h:commandButton value="Update Time">
+						<f:ajax render="timeOutput" />
+					</h:commandButton>
+				</h:form>
+			</fieldset>
+			<br />
+			<fieldset>
+				<legend>Time Pressed</legend>
+				<h:form>
+					<h3 class="no_margin_top">
+						<h:outputText id="pressed" value="#{ajax.pressed}" />
+					</h3>
+					<h:commandButton value="Press">
+						<f:ajax render="pressed" />
+					</h:commandButton>
+				</h:form>
+			</fieldset>
+			<br />
+			<fieldset>
+				<legend>Sum</legend>
+				<h:form>
+					First Number:
+					<h:inputText value="#{ajax.val1}" />
+					<br />
+					Second Number:
+					<h:inputText value="#{ajax.val2}" />
+					<br />
+					<h:commandButton value="Compute">
+						<f:ajax execute="@form" render="sumResult" />
+					</h:commandButton>
+					<br />
+					Result:
+					<h3>
+						<h:outputText id="sumResult" value="#{ajax.sum}" />
+					</h3>
+				</h:form>
+			</fieldset>
+			<br />
+			<fieldset>
+				<legend>Gambling</legend>
+				<h:form>
+					<h3 class="no_margin_top">
+						<h:outputText id="score" value="#{ajax.score}" />
+					</h3>
+					<h:commandButton action="#{ajax.scoreTry}" value="Try Me">
+						<f:ajax render="score" />
+					</h:commandButton>
+					<hr />
+					<h:commandButton action="#{ajax.scoreReset}" value="Reset">
+						<f:ajax render="score" />
+					</h:commandButton>
+				</h:form>
+			</fieldset>
+			<br />
+			<fieldset>
+				<legend>City Info Lookup</legend>
+				<h:form>
+					City:
+					<h:selectOneMenu value="#{cityBean.cityName}">
+						<f:selectItems value="#{cityBean.cities}" />
+						<f:ajax render="cityName nflTeam mlbTeam" />
+					</h:selectOneMenu>
+					<br />
+					<ul>
+						<li>City name: <h:outputText value="#{cityBean.cityName}"
+								id="cityName" /></li>
+						<li>NFL team: <h:outputText value="#{cityBean.nflTeam}"
+								id="nflTeam" /></li>
+						<li>MLB team: <h:outputText value="#{cityBean.mlbTeam}"
+								id="mlbTeam" /></li>
+					</ul>
+				</h:form>
+			</fieldset>
+		</div>
+
+	</div>
+	
+	<script>
+		function myFunction() {
+  			var x = document.getElementById("myTopnav");
+  			if (x.className === "topnav") {
+    			x.className += " responsive";
+  			} else {
+    			x.className = "topnav";
+  			}
+		}
+	</script>	
+</body>
+</html>
