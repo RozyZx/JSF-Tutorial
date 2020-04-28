@@ -1,8 +1,6 @@
 # Tugas JSF RSBK
 
-'''
-UPDATE: Ajax Tutorial
-'''
+## UPDATE: Ajax Tutorial
 
 Tugas penyelesaian exercise dari tutorial JSF, oleh:
 - nama: Muhammad Fachrurrozy
